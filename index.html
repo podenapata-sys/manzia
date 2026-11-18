@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manzia — Cold, Green, After Dark</title>
+  <meta name="description" content="Manzia. Cold-pressed green apple & lime, shaken over ice." />
+  <link rel="preload" as="image" href="frames/001.webp" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__brand">MANZIA</div>
+    <div class="loader__bar"><span id="loaderBar"></span></div>
+    <div class="loader__pct" id="loaderPct">0%</div>
+  </div>
+
+  <!-- Nav -->
+  <header class="nav">
+    <a href="#" class="nav__logo">MANZIA</a>
+    <nav class="nav__links">
+      <a href="#story">Story</a>
+      <a href="#flavours">Flavours</a>
+      <a href="#order" class="nav__cta">Order</a>
+    </nav>
+  </header>
+
+  <!-- Scroll progress -->
+  <div class="progress"><span id="progressBar"></span></div>
+
+  <main>
+    <!-- ===== Scroll-scrubbed video sequence ===== -->
+    <section class="sequence" id="sequence">
+      <div class="sequence__sticky">
+        <canvas id="seqCanvas" class="sequence__canvas"></canvas>
+        <div class="sequence__shade"></div>
+
+        <div class="beat beat--center" data-start="0" data-end="0.16">
+          <p class="eyebrow">Est. after dark</p>
+          <h1 class="beat__title beat__title--xl">MANZIA</h1>
+          <p class="beat__sub">Cold. Green. A little bit dangerous.</p>
+        </div>
+
+        <div class="beat beat--left" data-start="0.22" data-end="0.42">
+          <p class="eyebrow">01 — The pour</p>
+          <h2 class="beat__title">Cold-pressed.<br />Hand-shaken.</h2>
+          <p class="beat__sub">Green apple and lime, crushed the second you order.</p>
+        </div>
+
+        <div class="beat beat--right" data-start="0.48" data-end="0.68">
+          <p class="eyebrow">02 — The ice</p>
+          <h2 class="beat__title">Brutally<br />refreshing.</h2>
+          <p class="beat__sub">Packed to the dome. Zero watered-down sips.</p>
+        </div>
+
+        <div class="beat beat--left" data-start="0.76" data-end="1.01">
+          <p class="eyebrow">03 — The moment</p>
+          <h2 class="beat__title">Made for<br />late nights.</h2>
+          <a href="#order" class="btn">Grab one tonight</a>
+        </div>
+
+        <div class="scroll-hint" id="scrollHint">
+          <span>Scroll</span>
+          <i></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Story ===== -->
+    <section class="story" id="story">
+      <div class="container">
+        <p class="eyebrow reveal">The story</p>
+        <h2 class="story__title split" data-split>
+          We don't do sugar bombs. We do real fruit, real ice, and a straw that means business.
+        </h2>
+        <div class="stats">
+          <div class="stat reveal"><b data-count="100">0</b><span>% real fruit</span></div>
+          <div class="stat reveal"><b data-count="0">0</b><span>artificial colour</span></div>
+          <div class="stat reveal"><b data-count="90">0</b><span>seconds, shaken to served</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Marquee ===== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track" id="marquee">
+        <span>Green Apple ✦ Lime ✦ Mint ✦ Ice ✦ After Dark ✦ </span>
+        <span>Green Apple ✦ Lime ✦ Mint ✦ Ice ✦ After Dark ✦ </span>
+      </div>
+    </div>
+
+    <!-- ===== Flavours ===== -->
+    <section class="flavours" id="flavours">
+      <div class="container">
+        <p class="eyebrow reveal">The menu</p>
+        <h2 class="section-title reveal">Three ways to cool down.</h2>
+        <div class="cards">
+          <article class="card reveal" style="--accent:#b6d53c" data-tilt>
+            <div class="card__img parallax" style="background-image:url(frames/150.webp)" data-speed="0.08"></div>
+            <div class="card__body">
+              <h3>Original Green</h3>
+              <p>Green apple, lime, crushed ice. The one that started it.</p>
+              <span class="card__price">৳220</span>
+            </div>
+          </article>
+          <article class="card reveal" style="--accent:#ff8a1f" data-tilt>
+            <div class="card__img parallax" style="background-image:url(frames/100.webp)" data-speed="0.08"></div>
+            <div class="card__body">
+              <h3>Sunset Fizz</h3>
+              <p>Orange zest and sparkling lime over the original base.</p>
+              <span class="card__price">৳250</span>
+            </div>
+          </article>
+          <article class="card reveal" style="--accent:#e33b3b" data-tilt>
+            <div class="card__img parallax" style="background-image:url(frames/060.webp)" data-speed="0.08"></div>
+            <div class="card__body">
+              <h3>Red Wall</h3>
+              <p>Chilli-salt rim, sour apple, and a slow burn finish.</p>
+              <span class="card__price">৳270</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta" id="order">
+      <div class="cta__bg parallax" style="background-image:url(frames/238.webp)" data-speed="0.15"></div>
+      <div class="container cta__inner">
+        <h2 class="cta__title reveal">Your next sip<br />is one tap away.</h2>
+        <a href="#" class="btn btn--big reveal">Order now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Manzia</span>
+    <span>Cold. Green. After dark.</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
