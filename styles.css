@@ -111,9 +111,13 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(2.4rem, 6vw, 5.5rem);
   line-height: .95;
   letter-spacing: -0.02em;
-  text-shadow: 0 10px 40px rgba(0,0,0,.45);
+  /* see-through headline: the video shows through the letters */
+  color: rgba(244, 236, 225, 0.14);
+  -webkit-text-stroke: 1.5px rgba(244, 236, 225, 0.92);
+  paint-order: stroke fill;
+  filter: drop-shadow(0 4px 18px rgba(0,0,0,.35));
 }
-.beat__title--xl { font-size: clamp(4rem, 16vw, 14rem); letter-spacing: .04em; }
+.beat__title--xl { font-size: clamp(4rem, 16vw, 14rem); letter-spacing: .04em; -webkit-text-stroke-width: 2px; color: rgba(244,236,225,.08); }
 .beat .eyebrow, .beat__sub { text-shadow: 0 2px 14px rgba(0,0,0,.85); }
 .beat__sub { margin-top: 1.2rem; font-size: clamp(1rem, 1.6vw, 1.25rem); color: var(--muted); max-width: 32ch; }
 .beat--center .beat__sub { margin-inline: auto; }
