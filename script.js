@@ -4,6 +4,15 @@
   const FRAME_COUNT = 238;
   const framePath = (i) => `frames/${String(i + 1).padStart(3, "0")}.webp`;
   const LERP = 0.1; // lower = silkier/laggier, higher = snappier
+
+  // Two chapters from one clip: wide shot, a held pause, then the close-up.
+  const SPLIT = 59;                         // last frame of chapter I (0-based)
+  const CH1_END = 0.34, CH2_START = 0.46;   // scroll progress where the pause sits
+  function frameAt(p) {
+    if (p <= CH1_END) return (p / CH1_END) * SPLIT;
+    if (p < CH2_START) return SPLIT;
+    return SPLIT + ((p - CH2_START) / (1 - CH2_START)) * (FRAME_COUNT - 1 - SPLIT);
+  }
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const $ = (s, el = document) => el.querySelector(s);
@@ -123,6 +132,12 @@
   const beats = $$(".beat");
   const hint = $("#scrollHint");
   const progressBar = $("#progressBar");
+  const dip = $("#seqDip");
+  const chapterEl = $("#chapter");
+  const chapterNum = $("#chapterNum");
+  const chapterName = $("#chapterName");
+  const chapterBar = $("#chapterBar");
+  let currentChapter = 0;
 
   const state = { target: 0, progress: 0, frame: 0 };
   let needsDraw = true;
@@ -152,6 +167,21 @@
       b.classList.toggle("is-active", o > 0.5);
     }
     hint.style.opacity = String(clamp(1 - p * 12));
+
+    // chapter pause: dim the frozen frame, peak in the middle of the pause
+    const mid = (CH1_END + CH2_START) / 2, half = (CH2_START - CH1_END) / 2 + 0.03;
+    const dipT = clamp(1 - Math.abs(p - mid) / half);
+    dip.style.opacity = (ease(dipT) * 0.72).toFixed(3);
+
+    // chapter indicator
+    const ch = p < mid ? 0 : 1;
+    if (ch !== currentChapter) {
+      currentChapter = ch;
+      chapterNum.textContent = ch ? "II" : "I";
+      chapterName.textContent = ch ? "Up close" : "The wall";
+      chapterEl.classList.remove("swap"); void chapterEl.offsetWidth; chapterEl.classList.add("swap");
+    }
+    chapterBar.style.transform = `scaleX(${ch ? clamp((p - CH2_START) / (1 - CH2_START)) : clamp(p / CH1_END)})`;
   }
 
   /* ===================== Secondary effects ===================== */
@@ -216,7 +246,7 @@
     state.progress = lerp(state.progress, state.target, k);
     if (Math.abs(state.progress - state.target) < 0.0001) state.progress = state.target;
 
-    const f = state.progress * (FRAME_COUNT - 1);
+    const f = frameAt(state.progress);
     if (Math.round(f) !== Math.round(state.frame) || needsDraw) {
       state.frame = f;
       if (needsDraw) forceDraw = true;

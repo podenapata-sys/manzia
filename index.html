@@ -38,26 +38,39 @@
       <div class="sequence__sticky">
         <canvas id="seqCanvas" class="sequence__canvas"></canvas>
         <div class="sequence__shade"></div>
+        <div class="sequence__dip" id="seqDip"></div>
 
-        <div class="beat beat--center" data-start="0" data-end="0.16">
-          <p class="eyebrow">Scroll slowly — this one's for you</p>
+        <div class="chapter" id="chapter" aria-hidden="true">
+          <span class="chapter__num">Chapter <b id="chapterNum">I</b></span>
+          <span class="chapter__name" id="chapterName">The wall</span>
+          <span class="chapter__track"><i id="chapterBar"></i></span>
+        </div>
+
+        <div class="beat beat--center" data-start="0" data-end="0.13">
+          <p class="eyebrow">Chapter I · Scroll slowly — this one's for you</p>
           <h1 class="beat__title beat__title--xl">MANZIA</h1>
           <p class="beat__sub">Some people deserve more than a text message.</p>
         </div>
 
-        <div class="beat beat--left" data-start="0.22" data-end="0.42">
+        <div class="beat beat--left" data-start="0.15" data-end="0.33">
           <p class="eyebrow">01 — The way you exist</p>
           <h2 class="beat__title">You make ordinary<br />moments feel like<br />a film.</h2>
           <p class="beat__sub">A plain evening, a cold drink, a red wall — and somehow it turns into a scene worth remembering.</p>
         </div>
 
-        <div class="beat beat--right" data-start="0.48" data-end="0.68">
+        <div class="beat beat--center beat--chapter" data-start="0.345" data-end="0.47">
+          <p class="eyebrow">Chapter II</p>
+          <h2 class="beat__title beat__title--chapter">Up close.</h2>
+          <p class="beat__sub">The closer I look, the more I find.</p>
+        </div>
+
+        <div class="beat beat--right" data-start="0.52" data-end="0.72">
           <p class="eyebrow">02 — The way you care</p>
           <h2 class="beat__title">Kind in the<br />quiet ways.</h2>
           <p class="beat__sub">The ones nobody claps for, but everyone around you feels.</p>
         </div>
 
-        <div class="beat beat--left" data-start="0.76" data-end="1.01">
+        <div class="beat beat--left" data-start="0.78" data-end="1.01">
           <p class="eyebrow">03 — The way you are</p>
           <h2 class="beat__title">Effortlessly,<br />unmistakably<br />you.</h2>
           <a href="#story" class="btn">There's more ↓</a>
