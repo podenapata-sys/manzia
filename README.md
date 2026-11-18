@@ -1,4 +1,4 @@
-# Manzia — scroll-scrubbed landing page
+# For Manzia — a scroll-scrubbed tribute page
 
 Apple-style scroll animation: 238 video frames (`frames/*.webp`) are drawn to a
 `<canvas>` and scrubbed by scroll position, with lerp smoothing for a buttery feel.
